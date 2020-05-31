@@ -30,7 +30,6 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'ThePrimeagen/vim-be-good' 
 
 call plug#end()
@@ -51,12 +50,11 @@ nnoremap <Leader>os :OpenSession
 nnoremap <Leader>ss :SaveSession 
 nnoremap <Leader>cs :CloseSession 
 
-nmap <Leader>gd <Plug>(coc-definition)
-nmap <Leader>gr <Plug>(coc-references)
-
-nnoremap <Leader>p :GFiles<Enter>
-nnoremap <C-b> :Buffers<Enter>
-nnoremap <Leader>f :Files<Enter>
+let $FZF_DEFAULT_COMMAND = "rg --files --hidden --follow --no-ignore-vcs"
+nnoremap <Leader>g :GFiles<Enter>
+nnoremap <Leader>o :Buffers<Enter>
+nnoremap <Leader>z :Files<Enter>
+nnoremap <Leader>rg :Rg! 
 
 set backspace=2 
 set nobackup
@@ -109,20 +107,6 @@ set list listchars=tab:»·,trail:·,nbsp:·
 
 " Use one space, not two, after punctuation.
 set nojoinspaces
-
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in fzf for listing files. Lightning fast and respects .gitignore
-  let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
-
-  if !exists(":Ag")
-    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-    nnoremap \ :Ag<SPACE>
-  endif
-endif
 
 " Make it obvious where 80 characters is
 set textwidth=80

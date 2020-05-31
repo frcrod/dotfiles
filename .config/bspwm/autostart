@@ -30,7 +30,7 @@ xset s noblank &
 xset s noexpose &
 xset c on &
 xset -dpms &
-xbacklight -set 15 &
+light -S 15 &
 ## Run screenlock when suspending
 light-locker &
 ## Make monitor settings persist between reboots
@@ -44,7 +44,6 @@ xcape -e 'Super_L=Super_L|Shift_L|space' &
 ## Gnome keyring
 gnome-keyring-daemon &
 thunar --daemon &
-/usr/lib/mate-notification-daemon/mate-notification-daemon &
 ## Welcome message
 sleep 1 && notify-send "Welcome to Manjaro-bspwm! " "Press super + F1 to show keybindings" &
 
