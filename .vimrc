@@ -224,3 +224,15 @@ nnoremap <leader>tt :bel term <Enter><C-w>J clear <Enter> <C-\><C-n>
 set path+=**
 
 highlight LineNr ctermfg=100
+
+" Single movement on long lines
+nnoremap j gj
+nnoremap k gk
+
+" Remap CTRL d and u with center 
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" Remap search next with center 
+nnoremap n nzzzv
+nnoremap N Nzzzv
